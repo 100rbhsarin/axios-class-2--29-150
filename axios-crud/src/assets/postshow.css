@@ -1,12 +1,9 @@
-
-
 .card-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap onto the next line if needed */
-    gap: 20px; /* Space between cards */
-    padding: 20px;
-    background: linear-gradient(to right, #f16682, #fcfe7b);
-    justify-content: space-between; /* Spread cards evenly */
-    box-sizing: border-box; /* Include padding/border in size calculations */
-    width: 100%; /* Full width of the parent container */
-}
+    display: flex; /* Use flexbox for row-based layout */
+    flex-wrap: wrap; /* Allow cards to wrap to the next row when the row is full */
+    gap: 16px; /* Add space between cards */
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  

@@ -1,14 +1,16 @@
-import './postshow.css'
+// import './postshow.css'
 
 import { useEffect, useState } from "react";
 import { deletPost, getpost } from "../api/postApi";
 import {Card} from './card'
+import { Form } from "./Form";
 
 
 export const PostShow = ()=>{
 const [data,setData] = useState([])
 
 console.log(data)
+
 
 
 const handleDelete = async (id) => {
@@ -41,9 +43,13 @@ const handleDelete = async (id) => {
       },[])
     return(
         <>
+        <section>
+            <Form data={data} setData={setData}/>
+        </section>
         <div>
-<div className="card-container">
- <ol>
+
+ <ol className="card-container">
+    
     {data.map((curItem)=>{
         return(
             
@@ -54,7 +60,7 @@ const handleDelete = async (id) => {
 </ol>
 </div>
 
-        </div>
+    
         </>
     )
 }

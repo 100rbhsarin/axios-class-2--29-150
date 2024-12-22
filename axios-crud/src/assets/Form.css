@@ -1,0 +1,13 @@
+  
+  form{
+    display: flex;
+    align-items: center;
+  }
+  input{
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: rgb(158, 112, 55);
+  }

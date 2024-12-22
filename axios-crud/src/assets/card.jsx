@@ -8,7 +8,8 @@ export const Card = ({jsonData, onDelet}) =>{
     return(
         <>
      {/* <li className='user-id' key={id}> */}
-        <div className="card">
+     <div className='card'>
+    
         <li className='user-id' key={id}>
     <h1>id : {id}</h1>
     <h2 className="title">title :{title}</h2>
@@ -17,7 +18,7 @@ export const Card = ({jsonData, onDelet}) =>{
     <button onClick={() => onDelet(id)}>DELETE</button>
     </li>
 </div>
-      
+
 
 
         </>

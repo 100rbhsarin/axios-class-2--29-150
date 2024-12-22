@@ -1,5 +1,14 @@
 
-
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap onto the next line if needed */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    background: linear-gradient(to right, #f16682, #fcfe7b);
+    justify-content: space-between; /* Spread cards evenly */
+    box-sizing: border-box; /* Include padding/border in size calculations */
+    width: 100%; /* Full width of the parent container */
+}
 
 
 /* Individual card styling */
@@ -36,7 +45,8 @@
     font-size: 18px;
     font-weight: bold;
     color: #444;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+    margin-left: 20px;
 }
 
 
