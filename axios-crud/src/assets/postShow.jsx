@@ -8,6 +8,7 @@ import { Form } from "./Form";
 
 export const PostShow = ()=>{
 const [data,setData] = useState([])
+const [updatePostApi, setUpdatePostApi] = useState({})
 
 console.log(data)
 
@@ -30,6 +31,12 @@ const handleDelete = async (id) => {
     }
 };
 
+useEffect(()=>{
+      
+    getpostapi()
+    },[])
+
+
     const getpostapi = async () =>{
         const res = await getpost();
         setData(res.data)
@@ -37,14 +44,20 @@ const handleDelete = async (id) => {
       }
       
       
-      useEffect(()=>{
       
-      getpostapi()
-      },[])
+
+
+      // handle update post
+       const handleUpdatePost = (jsonData) => setUpdatePostApi(jsonData);
+
     return(
         <>
         <section>
-            <Form data={data} setData={setData}/>
+            <Form
+             data={data}
+              setData={setData} 
+              updatePostApi={updatePostApi}  
+              setUpdatePostApi={setUpdatePostApi}/>
         </section>
         <div>
 
@@ -53,7 +66,7 @@ const handleDelete = async (id) => {
     {data.map((curItem)=>{
         return(
             
-            <Card key={curItem.id} jsonData={curItem} onDelet={handleDelete} />
+            <Card key={curItem.id} curItem={curItem} onDelet={handleDelete}  handleUpdatePost={handleUpdatePost}/>
             
         )
     })}

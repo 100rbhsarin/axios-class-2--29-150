@@ -1,9 +1,9 @@
 import './card.css'
-export const Card = ({jsonData, onDelet}) =>{
+export const Card = ({curItem, onDelet , handleUpdatePost}) =>{
  
 
 
-    const {id,title,body} = jsonData
+    const {id,title,body} = curItem
 
     return(
         <>
@@ -14,7 +14,7 @@ export const Card = ({jsonData, onDelet}) =>{
     <h1>id : {id}</h1>
     <h2 className="title">title :{title}</h2>
     <p className="body"> body : {body}</p>
-    <button>EDIT</button>
+    <button onClick={()=>handleUpdatePost(curItem)}>EDIT</button>
     <button onClick={() => onDelet(id)}>DELETE</button>
     </li>
 </div>

@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Form.css'
-import { editPost } from '../api/postApi'
+import { editPost, putPost } from '../api/postApi'
 
 
-export const Form = ({data, setData})=>{
+export const Form = ({data, setData, updatePostApi, setUpdatePostApi})=>{
 
 
     const [addData,setAddData] = useState({
@@ -12,6 +12,17 @@ export const Form = ({data, setData})=>{
         body:''
     })
 
+
+    let isEmpty = Object.keys(updatePostApi).length === 0;
+
+    //get the updated data update into input field
+    useEffect(()=>{
+        updatePostApi && setAddData({
+            title: updatePostApi.title || "",
+            body: updatePostApi.body  || "",
+        })
+    },[updatePostApi])
+    
 
     const handleInputChange = (e)=>{
 
@@ -22,7 +33,7 @@ export const Form = ({data, setData})=>{
           return{
             ...prev, 
             [name]: value,
-            id: Date.now(),
+            
           }
         })
     }
@@ -45,14 +56,40 @@ export const Form = ({data, setData})=>{
 
 
 
+    const updatePostData = async () => {
+        try {
+          const res = await putPost(updatePostApi.id, addData);
+          console.log(res);
+    
+          if (res.status === 200) {
+            setData((prev) => {
+              return prev.map((curElem) => {
+                return curElem.id === res.data.id ? res.data : curElem;
+              });
+            });
+    
+            setAddData({ title: "", body: "" });
+            setUpdatePostApi({});
+          }
+        } catch ({ error }) {
+          console.log(error);
+        }
+      };
+
 
     const handleFormSubmit = (e)=>{
         e.preventDefault();
-        getData()
+        const action = e.nativeEvent.submitter.value;
+        if(action === 'ADD'){
+            getData()
+        }else if (action === 'EDIT'){
+            updatePostData()
+        }
+       
     }
 
     return (
-    <>
+    <>  
     <form onSubmit={handleFormSubmit}>
     
     <div >
@@ -80,7 +117,10 @@ export const Form = ({data, setData})=>{
             onChange={handleInputChange} />
         
     </div>
-    <button type="submit">FORM SUBMIT</button>
+
+    <button type="submit" value={isEmpty ? "ADD" : "EDIT"}>
+        {isEmpty ? "ADD": "EDIT"}
+        </button>
     </form>
     </>
 )

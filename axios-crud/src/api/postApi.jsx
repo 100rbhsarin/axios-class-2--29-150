@@ -20,3 +20,8 @@ export const deletPost = (id) => {
 export const editPost = (post)=>{
 return api.post('/posts',post)
 }
+
+//method of put  data from api
+export const putPost = (id, post)=>{
+ return api.put(`/posts/${id}`, post)
+}
