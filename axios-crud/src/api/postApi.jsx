@@ -25,3 +25,11 @@ return api.post('/posts',post)
 export const putPost = (id, post)=>{
  return api.put(`/posts/${id}`, post)
 }
+
+
+
+// Method	  HTTP Verb	   Endpoint  	  Purpose    	      Payload
+// getpost	     GET	    /posts	    Fetch all posts	        N/A
+// deletPost	DELETE	   /posts/:id	Delete a post by ID 	N/A
+// editPost	     POST	    /posts	    Add a new post	        Post object
+// putPost	      PUT	   /posts/:id	Update a post by ID 	Updated post object
